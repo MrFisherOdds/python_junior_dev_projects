@@ -2,7 +2,8 @@ from random import *
 print()
 print('Добро пожаловать в числовую угадайку!')
 while True:
-    n = randrange(1, 101)
+    limit = int(input('Введите максимальное число для угадайки: '))
+    n = randrange(1, limit + 1)
     try_counter = 0
 
 
@@ -19,16 +20,17 @@ while True:
 
 
     def is_valid(num):  # проверяем вадидность введенного числа
-        if 0 < num < 101:
+        global n
+        if 0 < num < n + 1:
             return True
         else:
             return False
 
 
-    s = int(input('Пожалуйста, введите число от 1 до 100: '))
+    s = int(input(f'Пожалуйста, введите число от 1 до {limit}: '))
 
     while not is_valid(s):
-        s = int(input('А может быть все-таки введем целое число от 1 до 100? : '))
+        s = int(input(f'А может быть все-таки введем целое число от 1 до {limit}? : '))
 
     digit_guess(s)
     print()
